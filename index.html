@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>altora.official | Precision Longevity, Redefined</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+        .faq-item.active .faq-content {
+            max-height: 500px;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #516161;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee 30s linear infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#516161",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#e0f2f1",
+                        "on-primary-container": "#5e6f6e",
+                        "secondary": "#5f5e5e",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#e2dfde",
+                        "on-secondary-container": "#636262",
+                        "tertiary": "#1b6d24",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#bdffb4",
+                        "on-tertiary-container": "#2c7b30",
+                        "surface": "#f8fafa",
+                        "on-surface": "#191c1d",
+                        "surface-variant": "#e1e3e3",
+                        "on-surface-variant": "#424848",
+                        "outline": "#727878",
+                        "outline-variant": "#c2c8c7",
+                        "background": "#f8fafa",
+                        "on-background": "#191c1d",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f2f4f4",
+                        "surface-container": "#eceeee",
+                        "surface-container-high": "#e6e8e8",
+                        "surface-container-highest": "#e1e3e3",
+                        "primary-fixed": "#d4e6e5",
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "md": "24px",
+                        "base": "8px",
+                        "margin-desktop": "64px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "lg": "48px",
+                        "xl": "120px", /* Increased for breathability */
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-7xl mx-auto py-4">
+<div class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface">altora.official</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#philosophy">Philosophy</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#technology">Technology</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#diagnostics">Diagnostics</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#research">Research</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#membership">Membership</a>
+</div>
+<button class="bg-on-surface text-surface px-6 py-2.5 rounded-DEFAULT font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">
+            Book Appointment
+        </button>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJ-lhqFzF5XIvi-pFwWO-ABWFmSFwVEj_em6561MRwmlWV32bKkbWK97j7gcO_rH0MjSlw4a6UuoUucG-6CSwDL42gV2jBSjq8VZKC7uKy_axKthVSa9FaUx2EWZvE3G9Z48PAblYrcFBeLK6hU1rioZi6_Ec4Dc2O_BD-883KjufWR076X6fYUMd9WrVl2NpE2_iATeSbrZC3aAZ_GbmVGlnVPw2enqUXONbD28_pLuEYJP8tA5yIAuMYrCvtxthJJZ9auZTxZg')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/60 to-transparent"></div>
+</div>
+<div class="relative z-10 w-full max-w-7xl mx-auto px-margin-desktop">
+<div class="max-w-2xl">
+<h1 class="font-display-lg text-display-lg mb-6 text-on-surface leading-tight">
+                Precision Longevity,<br/><span class="text-primary">Redefined.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-lg">
+                Experience the future of healthcare where clinical excellence meets personal concierge service. We utilize data-driven diagnostics to optimize your health span at altora.official.
+            </p>
+<div class="flex items-center space-x-4">
+<button class="bg-on-surface text-surface px-8 py-4 rounded-DEFAULT font-label-md text-label-md flex items-center space-x-2 hover:opacity-90 transition-all">
+<span>Explore Treatments</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<button class="border border-outline px-8 py-4 rounded-DEFAULT font-label-md text-label-md text-on-surface hover:bg-surface-container-low transition-all">
+                    Our Philosophy
+                </button>
+</div>
+</div>
+</div>
+</section>
+<!-- At-a-Glance Detail Bar -->
+<section class="relative z-20 -mt-12 w-full max-w-7xl mx-auto px-margin-desktop">
+<div class="bg-surface-container-lowest border border-outline-variant shadow-sm flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-outline-variant">
+<div class="flex-1 p-8 flex items-center space-x-4">
+<div class="w-12 h-12 bg-primary-container text-on-primary-container flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-on-surface">99%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Diagnostic Accuracy</div>
+</div>
+</div>
+<div class="flex-1 p-8 flex items-center space-x-4">
+<div class="w-12 h-12 bg-primary-container text-on-primary-container flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined">concierge</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-on-surface">24/7</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Concierge Support</div>
+</div>
+</div>
+<div class="flex-1 p-8 flex items-center space-x-4">
+<div class="w-12 h-12 bg-primary-container text-on-primary-container flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined">public</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-on-surface">15+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Global Specialists</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Philosophy & Approach Section -->
+<section class="py-xl bg-surface" id="philosophy">
+<div class="w-full max-w-7xl mx-auto px-margin-desktop">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="font-display-lg text-display-lg text-on-surface mb-6">Philosophy &amp; Approach</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">At altora.official, we believe health is not merely the absence of disease, but a state of optimized performance.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="flex flex-col items-center text-center p-8 border border-transparent hover:border-outline-variant transition-all rounded-lg">
+<div class="w-16 h-16 bg-primary-container text-primary flex items-center justify-center rounded-full mb-6">
+<span class="material-symbols-outlined text-3xl">query_stats</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 text-on-surface">Predictive</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Deep-genomic sequencing and AI pattern recognition identify risks decades before they manifest.</p>
+</div>
+<div class="flex flex-col items-center text-center p-8 border border-transparent hover:border-outline-variant transition-all rounded-lg">
+<div class="w-16 h-16 bg-primary-container text-primary flex items-center justify-center rounded-full mb-6">
+<span class="material-symbols-outlined text-3xl">security</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 text-on-surface">Preventative</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Shifting the paradigm from reactive 'sick-care' to proactive longevity management.</p>
+</div>
+<div class="flex flex-col items-center text-center p-8 border border-transparent hover:border-outline-variant transition-all rounded-lg">
+<div class="w-16 h-16 bg-primary-container text-primary flex items-center justify-center rounded-full mb-6">
+<span class="material-symbols-outlined text-3xl">person_check</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 text-on-surface">Personalized</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Every treatment plan is uniquely tailored to your specific biological signatures.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- "The Lab" Technology Section -->
+<section class="py-xl bg-surface-container-low border-y border-outline-variant" id="technology">
+<div class="w-full max-w-7xl mx-auto px-margin-desktop">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<div class="w-full lg:w-1/2">
+<div class="relative group">
+<div class="w-full aspect-video bg-cover bg-center border border-outline-variant" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDE1KN1n9cE4lSkEVbKMDQ3U_HR49KMwERi7ioIB6kSsoBraELKQaQMw7SYM5gOMGJUf1V9jUo-BoaDtv_tGZpv74Ys2tLQxO4hTcw88inMoJ32qR-DGTQEL-sqVQymjFns54fhKMw3OfPcANo-WwNJyj6qTG45Wdz1jAF-iAVHjXC6APPVK6m9ianJ_bwdt7SiTPJ6EA89dOcm5gTmDhyF1jj2tSdqYm1ftvACKIyzXEZB-OXegtKpaZ9J0iqfx4zBoFxjW5erAQ')"></div>
+<div class="absolute -bottom-6 -right-6 bg-white p-6 border border-outline-variant shadow-lg max-w-xs">
+<div class="font-label-sm text-label-sm text-primary uppercase mb-2">Active Tech</div>
+<div class="font-headline-md text-headline-md">Quantum MRI V.4</div>
+<p class="text-on-surface-variant font-body-md text-sm mt-2">Providing 4x the resolution of standard hospital systems at altora.official.</p>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-1/2">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-8">The Lab: Future Standards</h2>
+<div class="space-y-6">
+<div class="flex items-start space-x-4">
+<span class="material-symbols-outlined text-primary mt-1">speed</span>
+<div>
+<h4 class="font-headline-md text-headline-md text-base">Exceptional Speed</h4>
+<p class="text-on-surface-variant">Full-body scans completed in under 20 minutes with zero downtime.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<span class="material-symbols-outlined text-primary mt-1">precision_manufacturing</span>
+<div>
+<h4 class="font-headline-md text-headline-md text-base">Unmatched Accuracy</h4>
+<p class="text-on-surface-variant">AI-enhanced diagnostics identify pathologies years before traditional onset.</p>
+</div>
+</div>
+<div class="flex items-start space-x-4">
+<span class="material-symbols-outlined text-primary mt-1">bed</span>
+<div>
+<h4 class="font-headline-md text-headline-md text-base">Supreme Comfort</h4>
+<p class="text-on-surface-variant">Designed for comfort; wide-bore systems with ambient media immersion.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Advanced Diagnostics -->
+<section class="py-xl bg-surface" id="diagnostics">
+<div class="w-full max-w-7xl mx-auto px-margin-desktop">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Advanced Diagnostics</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Our diagnostic suite at altora.official represents the pinnacle of medical instrumentation.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="p-8 border border-outline-variant bg-surface-container-lowest hover:border-primary transition-all">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">dna</span>
+<h3 class="font-headline-md text-headline-md mb-4">Genetic Sequencing</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Full-exome sequencing and polygenic risk scoring to identify your unique inherited blueprints.</p>
+</div>
+<div class="p-8 border border-outline-variant bg-surface-container-lowest hover:border-primary transition-all">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">biotech</span>
+<h3 class="font-headline-md text-headline-md mb-4">Bio-Marker Analysis</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Tracking 150+ blood markers, including hormonal balance and systemic inflammation levels.</p>
+</div>
+<div class="p-8 border border-outline-variant bg-surface-container-lowest hover:border-primary transition-all">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">monitoring</span>
+<h3 class="font-headline-md text-headline-md mb-4">Metabolic Stress Testing</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Advanced hemodynamic and respiratory analysis during exertion to measure biological efficiency.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- NEW SECTION: Scientific Excellence -->
+<section class="py-xl bg-surface-container-low border-y border-outline-variant" id="research">
+<div class="w-full max-w-7xl mx-auto px-margin-desktop">
+<div class="mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Scientific Excellence</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Our protocols are validated by ongoing clinical research and published in leading peer-reviewed journals. We don't just follow standards; we set them.</p>
+</div>
+<div class="space-y-6">
+<div class="bg-surface p-8 border border-outline-variant hover:shadow-md transition-shadow group flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div class="flex-1">
+<div class="font-label-sm text-label-sm text-primary uppercase mb-2">Nature Communications | 2024</div>
+<h3 class="font-headline-md text-headline-md text-xl mb-2">Predictive modeling of cardiovascular health via AI-enhanced imaging</h3>
+<p class="text-on-surface-variant text-sm italic">Authors: Vance A., Sterling M., et al.</p>
+</div>
+<button class="flex items-center space-x-2 text-primary font-label-md hover:underline">
+<span>Read Abstract</span>
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<div class="bg-surface p-8 border border-outline-variant hover:shadow-md transition-shadow group flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div class="flex-1">
+<div class="font-label-sm text-label-sm text-primary uppercase mb-2">The Lancet Healthy Longevity | 2023</div>
+<h3 class="font-headline-md text-headline-md text-xl mb-2">Efficacy of personalized intervention protocols in reversing biological age markers</h3>
+<p class="text-on-surface-variant text-sm italic">Authors: Thorne E., altora.official Clinical Group</p>
+</div>
+<button class="flex items-center space-x-2 text-primary font-label-md hover:underline">
+<span>Read Abstract</span>
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<div class="bg-surface p-8 border border-outline-variant hover:shadow-md transition-shadow group flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div class="flex-1">
+<div class="font-label-sm text-label-sm text-primary uppercase mb-2">Cell Metabolism | 2023</div>
+<h3 class="font-headline-md text-headline-md text-xl mb-2">Genomic signatures of high-performance longevity: A decade-long cohort study</h3>
+<p class="text-on-surface-variant text-sm italic">Authors: altora.official Research Council</p>
+</div>
+<button class="flex items-center space-x-2 text-primary font-label-md hover:underline">
+<span>Read Abstract</span>
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Patient Success Stories -->
+<section class="py-xl bg-surface">
+<div class="w-full max-w-7xl mx-auto px-margin-desktop">
+<div class="mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Transformative Journeys</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Real outcomes from our community of dedicated patients at altora.official.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="bg-surface-container-lowest border border-outline-variant p-8 hover:shadow-lg transition-all duration-300 relative group">
+<div class="flex items-start mb-6">
+<div class="w-16 h-16 rounded-full bg-cover bg-center mr-4 grayscale group-hover:grayscale-0 transition-all duration-500" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDRZn6E0-9FNr7Q35FC14ZPr_KBzPLc0ZR_bDAfy798S5Ghhi_MigkSDu8_PP6PrJIEg84wFah3hHOifyX5Dsqcs8zocSqR1TBznE-NWTDSwa7yzuBnl-WWCCI0DXvGE2fcgrQaXebPftl6jQyEgrb6OBYgSWZZsTrcPpB1DevWUyt2J-19gmLYS2gPVAN9GDjVmBzdhkbTLaI_7UD-cUD1QDN52ffUJbx6gSE0c0PkeFyzR6H95cEBH-e8ejlNuo2Bgk_2NGAuig')"></div>
+<div>
+<div class="font-headline-md text-headline-md text-base text-on-surface">James R.</div>
+<div class="text-primary font-label-sm text-label-sm uppercase tracking-wide">CEO, Global Tech</div>
+</div>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant italic mb-6">"Six months into the protocol, my markers for inflammation have dropped by 40%, and my energy levels are higher than in my 30s."</p>
+<div class="flex space-x-4 border-t border-outline-variant pt-6">
+<div class="text-center flex-1">
+<div class="font-headline-md text-headline-md text-primary">-8 Years</div>
+<div class="text-xs uppercase text-on-surface-variant">Biological Age</div>
+</div>
+<div class="text-center flex-1 border-x border-outline-variant">
+<div class="font-headline-md text-headline-md text-primary">+25%</div>
+<div class="text-xs uppercase text-on-surface-variant">VO2 Max</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-8 hover:shadow-lg transition-all duration-300 relative group">
+<div class="flex items-start mb-6">
+<div class="w-16 h-16 rounded-full bg-cover bg-center mr-4 grayscale group-hover:grayscale-0 transition-all duration-500" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA2W3OL8zo7Op9NX2hgzcnzbblWFkn9Ijnqc3y4Rkec9DfPpzikdSeC7-gu-md6bxPh3IWGXeFuwW4a3BxY43BPqT3iWY8JF0Ln9VCK3DUorVVcbm7yr2sDNtGxpAwIlh3uOSkdMveml10o3UHxy3YwRe4PYzQpWsuFoHXTRAA-O8BQUWefFl-YFmfl4JSc5PI5anyiKO6CRsIBbY0tbVhHVCIe2ifepwdIqWRYTSgLI8DqEMO6iZ3KrFut0j3F783rcuQgrRTMjQ')"></div>
+<div>
+<div class="font-headline-md text-headline-md text-base text-on-surface">Sarah L.</div>
+<div class="text-primary font-label-sm text-label-sm uppercase tracking-wide">Venture Partner</div>
+</div>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant italic mb-6">"The executive assessment at altora uncovered a cardiovascular risk factor my previous GP missed for years. A literal life-saver."</p>
+<div class="flex space-x-4 border-t border-outline-variant pt-6">
+<div class="text-center flex-1">
+<div class="font-headline-md text-headline-md text-primary">100%</div>
+<div class="text-xs uppercase text-on-surface-variant">Risk Reversal</div>
+</div>
+<div class="text-center flex-1 border-x border-outline-variant">
+<div class="font-headline-md text-headline-md text-primary">Deep</div>
+<div class="text-xs uppercase text-on-surface-variant">Sleep Quality</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- NEW SECTION: Membership & Concierge -->
+<section class="py-xl bg-surface-container-low" id="membership">
+<div class="w-full max-w-7xl mx-auto px-margin-desktop">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="font-display-lg text-display-lg text-on-surface mb-6">Membership &amp; Concierge</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Bespoke care packages designed for those who demand uncompromising clinical excellence and 24/7 priority access.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Silver -->
+<div class="bg-surface border border-outline-variant p-10 flex flex-col hover:border-primary transition-all">
+<div class="mb-8">
+<h3 class="font-headline-md text-headline-md mb-2">Silver</h3>
+<div class="text-primary font-display-lg text-3xl">$12k<span class="text-sm font-label-md text-on-surface-variant">/annual</span></div>
+</div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="flex items-center text-sm"><span class="material-symbols-outlined text-primary text-sm mr-2">check</span>Annual Longevity Assessment</li>
+<li class="flex items-center text-sm"><span class="material-symbols-outlined text-primary text-sm mr-2">check</span>Full Bio-Marker Blood Panel</li>
+<li class="flex items-center text-sm"><span class="material-symbols-outlined text-primary text-sm mr-2">check</span>Next-Day Results Consultation</li>
+<li class="flex items-center text-sm"><span class="material-symbols-outlined text-primary text-sm mr-2">check</span>Standard Concierge Support</li>
+</ul>
+<button class="w-full border border-outline py-3 font-label-md hover:bg-surface-container transition-colors">Select Tier</button>
+</div>
+<!-- Gold -->
+<div class="bg-surface-container-lowest border-2 border-primary p-10 flex flex-col relative shadow-xl transform scale-105 z-10">
+<div class="absolute top-0 right-0 bg-primary text-white px-4 py-1 text-xs uppercase font-label-sm tracking-widest">Most Popular</div>
+<div class="mb-8">
+<h3 class="font-headline-md text-headline-md mb-2">Gold</h3>
+<div class="text-primary font-display-lg text-3xl">$25k<span class="text-sm font-label-md text-on-surface-variant">/annual</span></div>
+</div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="flex items-center text-sm"><span class="material-symbols-outlined text-primary text-sm mr-2">check</span>Bi-Annual Quantum MRI Scans</li>
+<li class="flex items-center text-sm"><span class="material-symbols-outlined text-primary text-sm mr-2">check</span>Full Genomic Sequencing</li>
+<li class="flex items-center text-sm"><span class="material-symbols-outlined text-primary text-sm mr-2">check</span>Monthly Bio-Hacking Check-ins</li>
+<li class="flex items-center text-sm"><span class="material-symbols-outlined text-primary text-sm mr-2">check</span>24/7 Direct Message to Dr. Council</li>
+<li class="flex items-center text-sm"><span class="material-symbols-outlined text-primary text-sm mr-2">check</span>Priority Global Clinic Access</li>
+</ul>
+<button class="w-full bg-primary text-white py-3 font-label-md hover:opacity-90 transition-all">Select Tier</button>
+</div>
+<!-- Platinum -->
+<div class="bg-surface border border-outline-variant p-10 flex flex-col hover:border-primary transition-all">
+<div class="mb-8">
+<h3 class="font-headline-md text-headline-md mb-2">Platinum</h3>
+<div class="text-primary font-display-lg text-3xl">$60k<span class="text-sm font-label-md text-on-surface-variant">/annual</span></div>
+</div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="flex items-center text-sm"><span class="material-symbols-outlined text-primary text-sm mr-2">check</span>Unlimited Diagnostic Imaging</li>
+<li class="flex items-center text-sm"><span class="material-symbols-outlined text-primary text-sm mr-2">check</span>Dedicated Private Care Manager</li>
+<li class="flex items-center text-sm"><span class="material-symbols-outlined text-primary text-sm mr-2">check</span>In-Home Specialist Visits</li>
+<li class="flex items-center text-sm"><span class="material-symbols-outlined text-primary text-sm mr-2">check</span>Global Wellness Travel Concierge</li>
+<li class="flex items-center text-sm"><span class="material-symbols-outlined text-primary text-sm mr-2">check</span>Biological Age Reversal Protocol</li>
+</ul>
+<button class="w-full border border-outline py-3 font-label-md hover:bg-surface-container transition-colors">Select Tier</button>
+</div>
+</div>
+</div>
+</section>
+<!-- NEW SECTION: Altora Ecosystem (Logo Cloud) -->
+<section class="py-lg bg-surface-container-lowest border-b border-outline-variant overflow-hidden">
+<div class="w-full max-w-7xl mx-auto px-margin-desktop mb-8 text-center">
+<h4 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Technology &amp; Strategic Partners</h4>
+</div>
+<div class="relative flex overflow-x-hidden">
+<div class="py-12 animate-marquee whitespace-nowrap flex items-center">
+<span class="mx-12 font-headline-md text-outline opacity-40">SIEMENS HEALTHINEERS</span>
+<span class="mx-12 font-headline-md text-outline opacity-40 text-4xl">ZEISS</span>
+<span class="mx-12 font-headline-md text-outline opacity-40">APPLE HEALTH</span>
+<span class="mx-12 font-headline-md text-outline opacity-40">THERMO FISHER</span>
+<span class="mx-12 font-headline-md text-outline opacity-40 text-4xl">ILUMINA</span>
+<span class="mx-12 font-headline-md text-outline opacity-40">ROCHE</span>
+<!-- Duplicates for seamless loop -->
+<span class="mx-12 font-headline-md text-outline opacity-40">SIEMENS HEALTHINEERS</span>
+<span class="mx-12 font-headline-md text-outline opacity-40 text-4xl">ZEISS</span>
+<span class="mx-12 font-headline-md text-outline opacity-40">APPLE HEALTH</span>
+<span class="mx-12 font-headline-md text-outline opacity-40">THERMO FISHER</span>
+<span class="mx-12 font-headline-md text-outline opacity-40 text-4xl">ILUMINA</span>
+<span class="mx-12 font-headline-md text-outline opacity-40">ROCHE</span>
+</div>
+</div>
+</section>
+<!-- Global Network (Grid style) -->
+<section class="py-xl bg-surface" id="global">
+<div class="w-full max-w-7xl mx-auto px-margin-desktop">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16">
+<div class="max-w-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Global Network</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Flagship clinics and partner facilities for seamless care continuity across borders at altora.official.</p>
+</div>
+<div class="mt-8 md:mt-0">
+<button class="border border-outline px-6 py-2.5 rounded-DEFAULT font-label-md text-label-md text-on-surface hover:bg-surface-container-lowest transition-all">
+                    View Map Locations
+                </button>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] bg-surface-container-highest mb-4 overflow-hidden border border-outline-variant">
+<div class="w-full h-full bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-500" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBKm5Ul06KFQ22M2dLhEVJSXejTeG_qg5u2a24fazY77mTqVESGPibHt6M5uftu1rP0wib7hAA4glPQmR65-IwO5exNHJmv6--RwC3YxJUeizWUuhMaJrdxyKzIeKXUDv8su3hHvdF4BTFKsapBcZELRGpkt-srRaa9RBFFie2YZyEIh1EuDhr1bhzmMeoLaJLouihshYUpwLNHLTdtLjStoRbRJJeOWtwX3pNuX7vmPE50BxHMJm8-UjzBtVJQvmttB74sRG7SDg')"></div>
+</div>
+<h4 class="font-headline-md text-headline-md text-base">London Flagship</h4>
+<p class="text-sm text-on-surface-variant">Mayfair District</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] bg-surface-container-highest mb-4 overflow-hidden border border-outline-variant">
+<div class="w-full h-full bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-500" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBkWR9iitaLh_l1pYDgazBYv98c2lnUzta9GJuOLZqUmE6-exglBw0Hjg2guu-C1S1NNGEOYq1ddOX_BNA9tev2NpLURcSPTNRhG0gOFUlr-MrbbTwslRwS_5gRrDYrQssinooKpzla7eWHVQMc7ekGfO9a4kji5pLaD7SSdUmzlDosbbaVxd-wQ62MRVgJq89Uw2CLMPgXNfMMpdOyXr_0dAjOAXBDSCHfRGsx5JgZZl3yGhn3dS1eXLHil3itEnGO2xX7e5XXQA')"></div>
+</div>
+<h4 class="font-headline-md text-headline-md text-base">Singapore Hub</h4>
+<p class="text-sm text-on-surface-variant">Marina Bay Sands</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] bg-surface-container-highest mb-4 overflow-hidden border border-outline-variant">
+<div class="w-full h-full bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-500" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCpOF1nfKIxzRroVCFC-kPab1mVyDSRU9V6yb6rz22vIepjvi4mqmb33j1jilKFujUVAwGSingdVc4KACzIbCPM2a49YsrYWHHGq4--kGZJZYgj3h9SDE76tVWTysFqgYOjVPE7uaXCLsKUAHYpyNVI-6CPVM6Ng6WiLQdyDReMuehKdAXI81Bc525DfYBuYxjrc5aaw8lGDiC7-QP_QjNu74CpFZ6f0dxHwrVBrbaF7_jLWwH9u-S1IP7qybCUPxDnfinnxq0v-A')"></div>
+</div>
+<h4 class="font-headline-md text-headline-md text-base">Zurich Wellness</h4>
+<p class="text-sm text-on-surface-variant">Seestrasse Center</p>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] bg-surface-container-highest mb-4 overflow-hidden border border-outline-variant">
+<div class="w-full h-full bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-500" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAzmd4jzaHBAEaDY8o7zq_ImMXZgGtHD6udAm1PidFkEC3AEpeemRsnqyKJrcrm1WqgjeBX1hcP-cljl5Nv-8atKaEkXgohauq4VkyJ4ycsIhCljr9KTYISZmTwytz8goEykb1S5pmlybeBl44kM5Ip53auRHudD-2efhmaDMI7T9DcWR_D92ySnEeXuH30vQW4mzed1zeH7TRjvBuZqGDMb-9oPlKJDiHtlf-mDhDWoCf_bHTH5IFPXVWOlRmCPjMgnGdJZUQe0w')"></div>
+</div>
+<h4 class="font-headline-md text-headline-md text-base">New York East</h4>
+<p class="text-sm text-on-surface-variant">Upper East Side</p>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-xl bg-surface-container-low border-y border-outline-variant">
+<div class="w-full max-w-7xl mx-auto px-margin-desktop">
+<div class="flex flex-col lg:flex-row gap-16">
+<div class="w-full lg:w-1/3">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">Frequently Asked Questions</h2>
+<div class="p-6 bg-surface border border-outline-variant">
+<div class="flex items-center space-x-3 mb-4">
+<span class="material-symbols-outlined text-primary">support_agent</span>
+<span class="font-headline-md text-headline-md text-base">Need more help?</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-4">Our concierge team is available 24/7 for specific inquiries at altora.official.</p>
+<button class="w-full py-3 bg-on-surface text-surface font-label-md text-label-md hover:opacity-90">Contact Concierge</button>
+</div>
+</div>
+<div class="w-full lg:w-2/3 space-y-4">
+<div class="faq-item border border-outline-variant bg-surface overflow-hidden transition-all">
+<button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+<span class="font-headline-md text-headline-md text-lg">What makes altora.official different?</span>
+<span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+</button>
+<div class="faq-content px-6 text-on-surface-variant font-body-md">
+                        We offer superior science. We integrate full-body Quantum MRI, deep genomic sequencing, and continuous biometric monitoring into a single unified protocol managed by global specialists.
+                    </div>
+</div>
+<div class="faq-item border border-outline-variant bg-surface overflow-hidden transition-all">
+<button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+<span class="font-headline-md text-headline-md text-lg">How is my health data secured?</span>
+<span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
+</button>
+<div class="faq-content px-6 text-on-surface-variant font-body-md">
+                        We utilize military-grade, end-to-end encryption. Our systems are fully HIPAA compliant with independent third-party cybersecurity audits quarterly.
+                    </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Appointment Section -->
+<section class="py-xl bg-on-surface text-surface" id="booking">
+<div class="w-full max-w-7xl mx-auto px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="font-display-lg text-display-lg text-surface mb-6">Secure Your Path Forward.</h2>
+<p class="text-surface-variant font-body-lg text-body-lg mb-8">Onboarding at altora.official is as seamless as our care.</p>
+<ul class="space-y-4">
+<li class="flex items-center space-x-3 text-surface-variant">
+<span class="material-symbols-outlined text-primary-fixed">verified_user</span>
+<span>Confidential data encryption</span>
+</li>
+<li class="flex items-center space-x-3 text-surface-variant">
+<span class="material-symbols-outlined text-primary-fixed">event_available</span>
+<span>Instant confirmation and SMS reminder</span>
+</li>
+</ul>
+</div>
+<div class="bg-surface text-on-surface p-8 rounded-lg shadow-2xl">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline-md text-headline-md">Consultation Booking</h3>
+<div class="text-primary font-label-md text-label-md">Step 1 of 3</div>
+</div>
+<div class="space-y-6">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase mb-2">Select Specialty</label>
+<select class="w-full border border-outline-variant p-3 focus:ring-1 focus:ring-primary focus:border-primary outline-none appearance-none bg-surface">
+<option>Executive Longevity Assessment</option>
+<option>Cardiovascular Screening</option>
+<option>Genetic Consultation</option>
+</select>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase mb-2">Availability Timeline</label>
+<div class="flex gap-2 overflow-x-auto pb-4 custom-scrollbar">
+<button class="flex-shrink-0 w-20 p-4 border border-outline-variant text-center hover:bg-primary-container transition-colors bg-primary-container border-primary">
+<div class="text-xs uppercase">Mon</div>
+<div class="font-bold text-lg">12</div>
+</button>
+<button class="flex-shrink-0 w-20 p-4 border border-outline-variant text-center hover:bg-primary-container transition-colors">
+<div class="text-xs uppercase">Tue</div>
+<div class="font-bold text-lg">13</div>
+</button>
+<button class="flex-shrink-0 w-20 p-4 border border-outline-variant text-center hover:bg-primary-container transition-colors">
+<div class="text-xs uppercase">Wed</div>
+<div class="font-bold text-lg">14</div>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-4 font-label-md text-label-md hover:opacity-90 transition-opacity">Confirm Appointment</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- The Longevity Council -->
+<section class="py-xl w-full max-w-7xl mx-auto px-margin-desktop">
+<h2 class="font-headline-lg text-headline-lg text-center mb-16">The Longevity Council</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="group border border-outline-variant hover:border-primary transition-all p-4 bg-surface text-center">
+<div class="relative mb-6 overflow-hidden aspect-[4/5]">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBMIUvqpRmVs3X8T_rvgonjZfk0Kw3YCJLDsoexBSdZvXctUyOSzBggK2fiT4epSGHCWgO0796m8CuyNXzobrx9fRdXFTY6-Y2x9VOzlRcQATMVxUzxbgQOI-7_1MOb_MBXwbnVwmWpMSz_CIPEdn17jzS7caDcskacCOEHaAys_06D7Ol3UH0UDMaMCOQG3UPljilUwmsOfg9HB7IO7sQwMK9jrS9a1iIJ1a8_VYlHyYo_9YPHjRjdnvOQyuDLO5kS9Bd2iieO7g')"></div>
+</div>
+<h4 class="font-headline-md text-headline-md">Dr. Adrian Vance</h4>
+<p class="text-primary font-label-md text-label-md mb-6">Lead Geneticist</p>
+<div class="flex border-t border-outline-variant">
+<button class="flex-1 py-4 font-label-md hover:bg-surface-container transition-colors border-r border-outline-variant">Message</button>
+<button class="flex-1 py-4 font-label-md hover:bg-surface-container transition-colors">Schedule</button>
+</div>
+</div>
+<div class="group border border-outline-variant hover:border-primary transition-all p-4 bg-surface text-center">
+<div class="relative mb-6 overflow-hidden aspect-[4/5]">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAd5EaEXWBScINgW8_uQS8PTRq1vRP3K0gWL7k3rYJG_UGqqMSclX8VlLUyelaco8VoxgdpZqSjp8ctHZdqlD_ppCxHUEHAGsBlAmfhY_7RQEGIyXSZ4TYR6ItqYaQZ4aKYuJTd_yDLfSDL1IUQKYN7zWpl1F4gAgJHaaWNT27E50oVhd0dJ2ZkKcvApkHnU374K4lgPfNZ4or7GcBfkyBWBJUUVyrurIfAf7423C5djcqSy5vjlvuMPDN91r6MRojvcZFE_OBBHg')"></div>
+</div>
+<h4 class="font-headline-md text-headline-md">Dr. Elena Thorne</h4>
+<p class="text-primary font-label-md text-label-md mb-6">Integrative Medicine</p>
+<div class="flex border-t border-outline-variant">
+<button class="flex-1 py-4 font-label-md hover:bg-surface-container transition-colors border-r border-outline-variant">Message</button>
+<button class="flex-1 py-4 font-label-md hover:bg-surface-container transition-colors">Schedule</button>
+</div>
+</div>
+<div class="group border border-outline-variant hover:border-primary transition-all p-4 bg-surface text-center">
+<div class="relative mb-6 overflow-hidden aspect-[4/5]">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAzmd4jzaHBAEaDY8o7zq_ImMXZgGtHD6udAm1PidFkEC3AEpeemRsnqyKJrcrm1WqgjeBX1hcP-cljl5Nv-8atKaEkXgohauq4VkyJ4ycsIhCljr9KTYISZmTwytz8goEykb1S5pmlybeBl44kM5Ip53auRHudD-2efhmaDMI7T9DcWR_D92ySnEeXuH30vQW4mzed1zeH7TRjvBuZqGDMb-9oPlKJDiHtlf-mDhDWoCf_bHTH5IFPXVWOlRmCPjMgnGdJZUQe0w')"></div>
+</div>
+<h4 class="font-headline-md text-headline-md">Dr. Marcus Sterling</h4>
+<p class="text-primary font-label-md text-label-md mb-6">Neuroscientist</p>
+<div class="flex border-t border-outline-variant">
+<button class="flex-1 py-4 font-label-md hover:bg-surface-container transition-colors border-r border-outline-variant">Message</button>
+<button class="flex-1 py-4 font-label-md hover:bg-surface-container transition-colors">Schedule</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-start w-full px-margin-desktop py-16 max-w-7xl mx-auto gap-12">
+<div class="max-w-sm">
+<div class="font-headline-md text-headline-md font-bold mb-4">altora.official</div>
+<p class="text-on-surface-variant font-body-md text-sm mb-6">Precision Excellence in Longevity. Harnessing the power of predictive clinical data to transform health spans globally.</p>
+<div class="font-label-sm text-label-sm text-outline uppercase tracking-widest">© 2024 altora.official</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-12">
+<div>
+<h5 class="font-label-md mb-4 text-on-surface">Explore</h5>
+<ul class="space-y-2">
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Specialties</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Diagnostics</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Technology</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-md mb-4 text-on-surface">Resources</h5>
+<ul class="space-y-2">
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Patient Portal</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Research Papers</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Ethics Charter</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-md mb-4 text-on-surface">Legal</h5>
+<ul class="space-y-2">
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Data Security</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+</div>
+</div>
+</footer>
+<script>
+    function toggleFaq(btn) {
+        const item = btn.closest('.faq-item');
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) {
+            item.classList.add('active');
+        }
+    }
+
+    // Nav active states
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('text-primary');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('text-primary');
+            }
+        });
+    });
+</script>
+</body></html>
