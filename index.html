@@ -43,6 +43,84 @@
         .animate-marquee {
             animation: marquee 30s linear infinite;
         }
+        .section-shell {
+            width: 100%;
+            max-width: 80rem;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        .mobile-chip-row {
+            scrollbar-width: none;
+        }
+        .mobile-chip-row::-webkit-scrollbar {
+            display: none;
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translate3d(0, 32px, 0) scale(0.985);
+            transition:
+                opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+            transition-delay: var(--reveal-delay, 0ms);
+            will-change: opacity, transform;
+        }
+        .scroll-reveal.is-visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+        .scroll-reveal-left {
+            transform: translate3d(-36px, 22px, 0) scale(0.985);
+        }
+        .scroll-reveal-right {
+            transform: translate3d(36px, 22px, 0) scale(0.985);
+        }
+        .scroll-reveal-zoom {
+            transform: translate3d(0, 24px, 0) scale(0.94);
+        }
+        @media (max-width: 767px) {
+            .section-shell {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            .hero-image-overlay {
+                background: linear-gradient(180deg, rgba(248,250,250,0.78) 0%, rgba(248,250,250,0.88) 50%, rgba(248,250,250,0.96) 100%) !important;
+            }
+            .scroll-reveal,
+            .scroll-reveal-left,
+            .scroll-reveal-right,
+            .scroll-reveal-zoom {
+                transform: translate3d(0, 16px, 0) scale(0.995);
+                transition-duration: 0.5s;
+            }
+            .animate-marquee {
+                animation-duration: 18s;
+            }
+            .mobile-card-tight {
+                padding: 1.25rem !important;
+            }
+            .mobile-stack {
+                flex-direction: column !important;
+                align-items: stretch !important;
+            }
+            .mobile-full {
+                width: 100% !important;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .scroll-reveal,
+            .scroll-reveal-left,
+            .scroll-reveal-right,
+            .scroll-reveal-zoom {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+            .animate-marquee {
+                animation: none !important;
+            }
+        }
     </style>
 <script id="tailwind-config">
         tailwind.config = {
@@ -122,8 +200,8 @@
 <body class="bg-surface text-on-surface font-body-md antialiased">
 <!-- Top Navigation Bar -->
 <nav class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant">
-<div class="flex justify-between items-center w-full px-margin-desktop max-w-7xl mx-auto py-4">
-<div class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface">altora.official</div>
+<div class="section-shell flex justify-between items-center gap-3 py-3 md:py-4">
+<div class="font-headline-md text-xl md:text-headline-md font-bold tracking-tight text-on-surface">altora.official</div>
 <div class="hidden md:flex items-center space-x-8">
 <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#philosophy">Philosophy</a>
 <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#technology">Technology</a>
@@ -131,31 +209,40 @@
 <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#research">Research</a>
 <a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#membership">Membership</a>
 </div>
-<button class="bg-on-surface text-surface px-6 py-2.5 rounded-DEFAULT font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all">
+<button class="bg-on-surface text-surface px-4 py-2.5 md:px-6 rounded-DEFAULT font-label-md text-[13px] md:text-label-md hover:opacity-90 active:scale-95 transition-all whitespace-nowrap">
             Book Appointment
         </button>
 </div>
+<div class="section-shell md:hidden pb-3">
+<div class="mobile-chip-row flex gap-2 overflow-x-auto">
+<a class="shrink-0 rounded-full border border-outline-variant px-3 py-2 text-[11px] uppercase tracking-[0.12em] text-on-surface-variant" href="#philosophy">Philosophy</a>
+<a class="shrink-0 rounded-full border border-outline-variant px-3 py-2 text-[11px] uppercase tracking-[0.12em] text-on-surface-variant" href="#technology">Technology</a>
+<a class="shrink-0 rounded-full border border-outline-variant px-3 py-2 text-[11px] uppercase tracking-[0.12em] text-on-surface-variant" href="#diagnostics">Diagnostics</a>
+<a class="shrink-0 rounded-full border border-outline-variant px-3 py-2 text-[11px] uppercase tracking-[0.12em] text-on-surface-variant" href="#research">Research</a>
+<a class="shrink-0 rounded-full border border-outline-variant px-3 py-2 text-[11px] uppercase tracking-[0.12em] text-on-surface-variant" href="#membership">Membership</a>
+</div>
+</div>
 </nav>
 <!-- Hero Section -->
-<section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+<section class="relative min-h-screen flex items-center pt-28 md:pt-20 overflow-hidden">
 <div class="absolute inset-0 z-0">
 <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJ-lhqFzF5XIvi-pFwWO-ABWFmSFwVEj_em6561MRwmlWV32bKkbWK97j7gcO_rH0MjSlw4a6UuoUucG-6CSwDL42gV2jBSjq8VZKC7uKy_axKthVSa9FaUx2EWZvE3G9Z48PAblYrcFBeLK6hU1rioZi6_Ec4Dc2O_BD-883KjufWR076X6fYUMd9WrVl2NpE2_iATeSbrZC3aAZ_GbmVGlnVPw2enqUXONbD28_pLuEYJP8tA5yIAuMYrCvtxthJJZ9auZTxZg')"></div>
-<div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/60 to-transparent"></div>
+<div class="hero-image-overlay absolute inset-0 bg-gradient-to-r from-surface via-surface/60 to-transparent"></div>
 </div>
-<div class="relative z-10 w-full max-w-7xl mx-auto px-margin-desktop">
+<div class="section-shell relative z-10">
 <div class="max-w-2xl">
-<h1 class="font-display-lg text-display-lg mb-6 text-on-surface leading-tight">
+<h1 class="font-display-lg text-[38px] leading-[1.05] md:text-display-lg mb-5 md:mb-6 text-on-surface">
                 Precision Longevity,<br/><span class="text-primary">Redefined.</span>
 </h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-lg">
+<p class="font-body-lg text-[16px] leading-7 md:text-body-lg text-on-surface-variant mb-8 md:mb-10 max-w-lg">
                 Experience the future of healthcare where clinical excellence meets personal concierge service. We utilize data-driven diagnostics to optimize your health span at altora.official.
             </p>
-<div class="flex items-center space-x-4">
-<button class="bg-on-surface text-surface px-8 py-4 rounded-DEFAULT font-label-md text-label-md flex items-center space-x-2 hover:opacity-90 transition-all">
+<div class="mobile-stack flex items-center space-x-0 md:space-x-4 gap-3">
+<button class="mobile-full bg-on-surface text-surface px-6 md:px-8 py-4 rounded-DEFAULT font-label-md text-label-md flex items-center justify-center space-x-2 hover:opacity-90 transition-all">
 <span>Explore Treatments</span>
 <span class="material-symbols-outlined text-sm">arrow_forward</span>
 </button>
-<button class="border border-outline px-8 py-4 rounded-DEFAULT font-label-md text-label-md text-on-surface hover:bg-surface-container-low transition-all">
+<button class="mobile-full border border-outline px-6 md:px-8 py-4 rounded-DEFAULT font-label-md text-label-md text-on-surface hover:bg-surface-container-low transition-all">
                     Our Philosophy
                 </button>
 </div>
@@ -163,9 +250,9 @@
 </div>
 </section>
 <!-- At-a-Glance Detail Bar -->
-<section class="relative z-20 -mt-12 w-full max-w-7xl mx-auto px-margin-desktop">
+<section class="relative z-20 -mt-8 md:-mt-12 section-shell">
 <div class="bg-surface-container-lowest border border-outline-variant shadow-sm flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-outline-variant">
-<div class="flex-1 p-8 flex items-center space-x-4">
+<div class="flex-1 p-5 md:p-8 flex items-center space-x-4">
 <div class="w-12 h-12 bg-primary-container text-on-primary-container flex items-center justify-center rounded-full">
 <span class="material-symbols-outlined">analytics</span>
 </div>
@@ -174,7 +261,7 @@
 <div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Diagnostic Accuracy</div>
 </div>
 </div>
-<div class="flex-1 p-8 flex items-center space-x-4">
+<div class="flex-1 p-5 md:p-8 flex items-center space-x-4">
 <div class="w-12 h-12 bg-primary-container text-on-primary-container flex items-center justify-center rounded-full">
 <span class="material-symbols-outlined">concierge</span>
 </div>
@@ -183,7 +270,7 @@
 <div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Concierge Support</div>
 </div>
 </div>
-<div class="flex-1 p-8 flex items-center space-x-4">
+<div class="flex-1 p-5 md:p-8 flex items-center space-x-4">
 <div class="w-12 h-12 bg-primary-container text-on-primary-container flex items-center justify-center rounded-full">
 <span class="material-symbols-outlined">public</span>
 </div>
@@ -195,28 +282,28 @@
 </div>
 </section>
 <!-- Philosophy & Approach Section -->
-<section class="py-xl bg-surface" id="philosophy">
-<div class="w-full max-w-7xl mx-auto px-margin-desktop">
-<div class="text-center max-w-3xl mx-auto mb-16">
-<h2 class="font-display-lg text-display-lg text-on-surface mb-6">Philosophy &amp; Approach</h2>
+<section class="py-16 md:py-xl bg-surface" id="philosophy">
+<div class="section-shell">
+<div class="text-center max-w-3xl mx-auto mb-10 md:mb-16">
+<h2 class="font-display-lg text-[34px] leading-tight md:text-display-lg text-on-surface mb-4 md:mb-6">Philosophy &amp; Approach</h2>
 <p class="font-body-lg text-body-lg text-on-surface-variant">At altora.official, we believe health is not merely the absence of disease, but a state of optimized performance.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-<div class="flex flex-col items-center text-center p-8 border border-transparent hover:border-outline-variant transition-all rounded-lg">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-12">
+<div class="mobile-card-tight flex flex-col items-center text-center p-8 border border-transparent hover:border-outline-variant transition-all rounded-lg bg-surface-container-lowest/40">
 <div class="w-16 h-16 bg-primary-container text-primary flex items-center justify-center rounded-full mb-6">
 <span class="material-symbols-outlined text-3xl">query_stats</span>
 </div>
 <h3 class="font-headline-md text-headline-md mb-4 text-on-surface">Predictive</h3>
 <p class="font-body-md text-body-md text-on-surface-variant">Deep-genomic sequencing and AI pattern recognition identify risks decades before they manifest.</p>
 </div>
-<div class="flex flex-col items-center text-center p-8 border border-transparent hover:border-outline-variant transition-all rounded-lg">
+<div class="mobile-card-tight flex flex-col items-center text-center p-8 border border-transparent hover:border-outline-variant transition-all rounded-lg bg-surface-container-lowest/40">
 <div class="w-16 h-16 bg-primary-container text-primary flex items-center justify-center rounded-full mb-6">
 <span class="material-symbols-outlined text-3xl">security</span>
 </div>
 <h3 class="font-headline-md text-headline-md mb-4 text-on-surface">Preventative</h3>
 <p class="font-body-md text-body-md text-on-surface-variant">Shifting the paradigm from reactive 'sick-care' to proactive longevity management.</p>
 </div>
-<div class="flex flex-col items-center text-center p-8 border border-transparent hover:border-outline-variant transition-all rounded-lg">
+<div class="mobile-card-tight flex flex-col items-center text-center p-8 border border-transparent hover:border-outline-variant transition-all rounded-lg bg-surface-container-lowest/40">
 <div class="w-16 h-16 bg-primary-container text-primary flex items-center justify-center rounded-full mb-6">
 <span class="material-symbols-outlined text-3xl">person_check</span>
 </div>
@@ -227,13 +314,13 @@
 </div>
 </section>
 <!-- "The Lab" Technology Section -->
-<section class="py-xl bg-surface-container-low border-y border-outline-variant" id="technology">
-<div class="w-full max-w-7xl mx-auto px-margin-desktop">
-<div class="flex flex-col lg:flex-row items-center gap-16">
+<section class="py-16 md:py-xl bg-surface-container-low border-y border-outline-variant" id="technology">
+<div class="section-shell">
+<div class="flex flex-col lg:flex-row items-center gap-10 md:gap-16">
 <div class="w-full lg:w-1/2">
 <div class="relative group">
 <div class="w-full aspect-video bg-cover bg-center border border-outline-variant" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDE1KN1n9cE4lSkEVbKMDQ3U_HR49KMwERi7ioIB6kSsoBraELKQaQMw7SYM5gOMGJUf1V9jUo-BoaDtv_tGZpv74Ys2tLQxO4hTcw88inMoJ32qR-DGTQEL-sqVQymjFns54fhKMw3OfPcANo-WwNJyj6qTG45Wdz1jAF-iAVHjXC6APPVK6m9ianJ_bwdt7SiTPJ6EA89dOcm5gTmDhyF1jj2tSdqYm1ftvACKIyzXEZB-OXegtKpaZ9J0iqfx4zBoFxjW5erAQ')"></div>
-<div class="absolute -bottom-6 -right-6 bg-white p-6 border border-outline-variant shadow-lg max-w-xs">
+<div class="relative md:absolute md:-bottom-6 md:-right-6 mt-4 md:mt-0 bg-white p-5 md:p-6 border border-outline-variant shadow-lg max-w-xs">
 <div class="font-label-sm text-label-sm text-primary uppercase mb-2">Active Tech</div>
 <div class="font-headline-md text-headline-md">Quantum MRI V.4</div>
 <p class="text-on-surface-variant font-body-md text-sm mt-2">Providing 4x the resolution of standard hospital systems at altora.official.</p>
@@ -241,7 +328,7 @@
 </div>
 </div>
 <div class="w-full lg:w-1/2">
-<h2 class="font-headline-lg text-headline-lg text-on-surface mb-8">The Lab: Future Standards</h2>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6 md:mb-8">The Lab: Future Standards</h2>
 <div class="space-y-6">
 <div class="flex items-start space-x-4">
 <span class="material-symbols-outlined text-primary mt-1">speed</span>
@@ -270,24 +357,24 @@
 </div>
 </section>
 <!-- Advanced Diagnostics -->
-<section class="py-xl bg-surface" id="diagnostics">
-<div class="w-full max-w-7xl mx-auto px-margin-desktop">
-<div class="text-center max-w-3xl mx-auto mb-16">
+<section class="py-16 md:py-xl bg-surface" id="diagnostics">
+<div class="section-shell">
+<div class="text-center max-w-3xl mx-auto mb-10 md:mb-16">
 <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Advanced Diagnostics</h2>
 <p class="font-body-md text-body-md text-on-surface-variant">Our diagnostic suite at altora.official represents the pinnacle of medical instrumentation.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-<div class="p-8 border border-outline-variant bg-surface-container-lowest hover:border-primary transition-all">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-gutter">
+<div class="mobile-card-tight p-8 border border-outline-variant bg-surface-container-lowest hover:border-primary transition-all">
 <span class="material-symbols-outlined text-primary text-4xl mb-6">dna</span>
 <h3 class="font-headline-md text-headline-md mb-4">Genetic Sequencing</h3>
 <p class="font-body-md text-body-md text-on-surface-variant">Full-exome sequencing and polygenic risk scoring to identify your unique inherited blueprints.</p>
 </div>
-<div class="p-8 border border-outline-variant bg-surface-container-lowest hover:border-primary transition-all">
+<div class="mobile-card-tight p-8 border border-outline-variant bg-surface-container-lowest hover:border-primary transition-all">
 <span class="material-symbols-outlined text-primary text-4xl mb-6">biotech</span>
 <h3 class="font-headline-md text-headline-md mb-4">Bio-Marker Analysis</h3>
 <p class="font-body-md text-body-md text-on-surface-variant">Tracking 150+ blood markers, including hormonal balance and systemic inflammation levels.</p>
 </div>
-<div class="p-8 border border-outline-variant bg-surface-container-lowest hover:border-primary transition-all">
+<div class="mobile-card-tight p-8 border border-outline-variant bg-surface-container-lowest hover:border-primary transition-all">
 <span class="material-symbols-outlined text-primary text-4xl mb-6">monitoring</span>
 <h3 class="font-headline-md text-headline-md mb-4">Metabolic Stress Testing</h3>
 <p class="font-body-md text-body-md text-on-surface-variant">Advanced hemodynamic and respiratory analysis during exertion to measure biological efficiency.</p>
@@ -296,14 +383,14 @@
 </div>
 </section>
 <!-- NEW SECTION: Scientific Excellence -->
-<section class="py-xl bg-surface-container-low border-y border-outline-variant" id="research">
-<div class="w-full max-w-7xl mx-auto px-margin-desktop">
-<div class="mb-16">
+<section class="py-16 md:py-xl bg-surface-container-low border-y border-outline-variant" id="research">
+<div class="section-shell">
+<div class="mb-10 md:mb-16">
 <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Scientific Excellence</h2>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Our protocols are validated by ongoing clinical research and published in leading peer-reviewed journals. We don't just follow standards; we set them.</p>
 </div>
 <div class="space-y-6">
-<div class="bg-surface p-8 border border-outline-variant hover:shadow-md transition-shadow group flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div class="mobile-card-tight bg-surface p-8 border border-outline-variant hover:shadow-md transition-shadow group flex flex-col md:flex-row justify-between items-start md:items-center gap-4 md:gap-6">
 <div class="flex-1">
 <div class="font-label-sm text-label-sm text-primary uppercase mb-2">Nature Communications | 2024</div>
 <h3 class="font-headline-md text-headline-md text-xl mb-2">Predictive modeling of cardiovascular health via AI-enhanced imaging</h3>
@@ -314,7 +401,7 @@
 <span class="material-symbols-outlined text-sm">open_in_new</span>
 </button>
 </div>
-<div class="bg-surface p-8 border border-outline-variant hover:shadow-md transition-shadow group flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div class="mobile-card-tight bg-surface p-8 border border-outline-variant hover:shadow-md transition-shadow group flex flex-col md:flex-row justify-between items-start md:items-center gap-4 md:gap-6">
 <div class="flex-1">
 <div class="font-label-sm text-label-sm text-primary uppercase mb-2">The Lancet Healthy Longevity | 2023</div>
 <h3 class="font-headline-md text-headline-md text-xl mb-2">Efficacy of personalized intervention protocols in reversing biological age markers</h3>
@@ -325,7 +412,7 @@
 <span class="material-symbols-outlined text-sm">open_in_new</span>
 </button>
 </div>
-<div class="bg-surface p-8 border border-outline-variant hover:shadow-md transition-shadow group flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div class="mobile-card-tight bg-surface p-8 border border-outline-variant hover:shadow-md transition-shadow group flex flex-col md:flex-row justify-between items-start md:items-center gap-4 md:gap-6">
 <div class="flex-1">
 <div class="font-label-sm text-label-sm text-primary uppercase mb-2">Cell Metabolism | 2023</div>
 <h3 class="font-headline-md text-headline-md text-xl mb-2">Genomic signatures of high-performance longevity: A decade-long cohort study</h3>
@@ -340,14 +427,14 @@
 </div>
 </section>
 <!-- Patient Success Stories -->
-<section class="py-xl bg-surface">
-<div class="w-full max-w-7xl mx-auto px-margin-desktop">
-<div class="mb-16">
+<section class="py-16 md:py-xl bg-surface">
+<div class="section-shell">
+<div class="mb-10 md:mb-16">
 <h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Transformative Journeys</h2>
 <p class="font-body-md text-body-md text-on-surface-variant">Real outcomes from our community of dedicated patients at altora.official.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
-<div class="bg-surface-container-lowest border border-outline-variant p-8 hover:shadow-lg transition-all duration-300 relative group">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-gutter">
+<div class="mobile-card-tight bg-surface-container-lowest border border-outline-variant p-8 hover:shadow-lg transition-all duration-300 relative group">
 <div class="flex items-start mb-6">
 <div class="w-16 h-16 rounded-full bg-cover bg-center mr-4 grayscale group-hover:grayscale-0 transition-all duration-500" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDRZn6E0-9FNr7Q35FC14ZPr_KBzPLc0ZR_bDAfy798S5Ghhi_MigkSDu8_PP6PrJIEg84wFah3hHOifyX5Dsqcs8zocSqR1TBznE-NWTDSwa7yzuBnl-WWCCI0DXvGE2fcgrQaXebPftl6jQyEgrb6OBYgSWZZsTrcPpB1DevWUyt2J-19gmLYS2gPVAN9GDjVmBzdhkbTLaI_7UD-cUD1QDN52ffUJbx6gSE0c0PkeFyzR6H95cEBH-e8ejlNuo2Bgk_2NGAuig')"></div>
 <div>
@@ -367,7 +454,7 @@
 </div>
 </div>
 </div>
-<div class="bg-surface-container-lowest border border-outline-variant p-8 hover:shadow-lg transition-all duration-300 relative group">
+<div class="mobile-card-tight bg-surface-container-lowest border border-outline-variant p-8 hover:shadow-lg transition-all duration-300 relative group">
 <div class="flex items-start mb-6">
 <div class="w-16 h-16 rounded-full bg-cover bg-center mr-4 grayscale group-hover:grayscale-0 transition-all duration-500" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA2W3OL8zo7Op9NX2hgzcnzbblWFkn9Ijnqc3y4Rkec9DfPpzikdSeC7-gu-md6bxPh3IWGXeFuwW4a3BxY43BPqT3iWY8JF0Ln9VCK3DUorVVcbm7yr2sDNtGxpAwIlh3uOSkdMveml10o3UHxy3YwRe4PYzQpWsuFoHXTRAA-O8BQUWefFl-YFmfl4JSc5PI5anyiKO6CRsIBbY0tbVhHVCIe2ifepwdIqWRYTSgLI8DqEMO6iZ3KrFut0j3F783rcuQgrRTMjQ')"></div>
 <div>
@@ -391,15 +478,15 @@
 </div>
 </section>
 <!-- NEW SECTION: Membership & Concierge -->
-<section class="py-xl bg-surface-container-low" id="membership">
-<div class="w-full max-w-7xl mx-auto px-margin-desktop">
-<div class="text-center max-w-3xl mx-auto mb-16">
-<h2 class="font-display-lg text-display-lg text-on-surface mb-6">Membership &amp; Concierge</h2>
+<section class="py-16 md:py-xl bg-surface-container-low" id="membership">
+<div class="section-shell">
+<div class="text-center max-w-3xl mx-auto mb-10 md:mb-16">
+<h2 class="font-display-lg text-[34px] leading-tight md:text-display-lg text-on-surface mb-4 md:mb-6">Membership &amp; Concierge</h2>
 <p class="font-body-lg text-body-lg text-on-surface-variant">Bespoke care packages designed for those who demand uncompromising clinical excellence and 24/7 priority access.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8">
 <!-- Silver -->
-<div class="bg-surface border border-outline-variant p-10 flex flex-col hover:border-primary transition-all">
+<div class="mobile-card-tight bg-surface border border-outline-variant p-10 flex flex-col hover:border-primary transition-all">
 <div class="mb-8">
 <h3 class="font-headline-md text-headline-md mb-2">Silver</h3>
 <div class="text-primary font-display-lg text-3xl">$12k<span class="text-sm font-label-md text-on-surface-variant">/annual</span></div>
@@ -413,7 +500,7 @@
 <button class="w-full border border-outline py-3 font-label-md hover:bg-surface-container transition-colors">Select Tier</button>
 </div>
 <!-- Gold -->
-<div class="bg-surface-container-lowest border-2 border-primary p-10 flex flex-col relative shadow-xl transform scale-105 z-10">
+<div class="mobile-card-tight bg-surface-container-lowest border-2 border-primary p-10 flex flex-col relative shadow-xl md:transform md:scale-105 z-10">
 <div class="absolute top-0 right-0 bg-primary text-white px-4 py-1 text-xs uppercase font-label-sm tracking-widest">Most Popular</div>
 <div class="mb-8">
 <h3 class="font-headline-md text-headline-md mb-2">Gold</h3>
@@ -429,7 +516,7 @@
 <button class="w-full bg-primary text-white py-3 font-label-md hover:opacity-90 transition-all">Select Tier</button>
 </div>
 <!-- Platinum -->
-<div class="bg-surface border border-outline-variant p-10 flex flex-col hover:border-primary transition-all">
+<div class="mobile-card-tight bg-surface border border-outline-variant p-10 flex flex-col hover:border-primary transition-all">
 <div class="mb-8">
 <h3 class="font-headline-md text-headline-md mb-2">Platinum</h3>
 <div class="text-primary font-display-lg text-3xl">$60k<span class="text-sm font-label-md text-on-surface-variant">/annual</span></div>
@@ -447,8 +534,8 @@
 </div>
 </section>
 <!-- NEW SECTION: Altora Ecosystem (Logo Cloud) -->
-<section class="py-lg bg-surface-container-lowest border-b border-outline-variant overflow-hidden">
-<div class="w-full max-w-7xl mx-auto px-margin-desktop mb-8 text-center">
+<section class="py-12 md:py-lg bg-surface-container-lowest border-b border-outline-variant overflow-hidden">
+<div class="section-shell mb-6 md:mb-8 text-center">
 <h4 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Technology &amp; Strategic Partners</h4>
 </div>
 <div class="relative flex overflow-x-hidden">
@@ -470,9 +557,9 @@
 </div>
 </section>
 <!-- Global Network (Grid style) -->
-<section class="py-xl bg-surface" id="global">
-<div class="w-full max-w-7xl mx-auto px-margin-desktop">
-<div class="flex flex-col md:flex-row justify-between items-end mb-16">
+<section class="py-16 md:py-xl bg-surface" id="global">
+<div class="section-shell">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-16 gap-4">
 <div class="max-w-xl">
 <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Global Network</h2>
 <p class="font-body-md text-body-md text-on-surface-variant">Flagship clinics and partner facilities for seamless care continuity across borders at altora.official.</p>
@@ -483,7 +570,7 @@
                 </button>
 </div>
 </div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 md:gap-gutter">
 <div class="group cursor-pointer">
 <div class="aspect-[4/3] bg-surface-container-highest mb-4 overflow-hidden border border-outline-variant">
 <div class="w-full h-full bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-500" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBKm5Ul06KFQ22M2dLhEVJSXejTeG_qg5u2a24fazY77mTqVESGPibHt6M5uftu1rP0wib7hAA4glPQmR65-IwO5exNHJmv6--RwC3YxJUeizWUuhMaJrdxyKzIeKXUDv8su3hHvdF4BTFKsapBcZELRGpkt-srRaa9RBFFie2YZyEIh1EuDhr1bhzmMeoLaJLouihshYUpwLNHLTdtLjStoRbRJJeOWtwX3pNuX7vmPE50BxHMJm8-UjzBtVJQvmttB74sRG7SDg')"></div>
@@ -516,9 +603,9 @@
 </div>
 </section>
 <!-- FAQ Section -->
-<section class="py-xl bg-surface-container-low border-y border-outline-variant">
-<div class="w-full max-w-7xl mx-auto px-margin-desktop">
-<div class="flex flex-col lg:flex-row gap-16">
+<section class="py-16 md:py-xl bg-surface-container-low border-y border-outline-variant">
+<div class="section-shell">
+<div class="flex flex-col lg:flex-row gap-10 md:gap-16">
 <div class="w-full lg:w-1/3">
 <h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">Frequently Asked Questions</h2>
 <div class="p-6 bg-surface border border-outline-variant">
@@ -532,20 +619,20 @@
 </div>
 <div class="w-full lg:w-2/3 space-y-4">
 <div class="faq-item border border-outline-variant bg-surface overflow-hidden transition-all">
-<button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+<button class="w-full flex items-center justify-between gap-4 p-5 md:p-6 text-left" onclick="toggleFaq(this)">
 <span class="font-headline-md text-headline-md text-lg">What makes altora.official different?</span>
 <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
 </button>
-<div class="faq-content px-6 text-on-surface-variant font-body-md">
+<div class="faq-content px-5 md:px-6 text-on-surface-variant font-body-md">
                         We offer superior science. We integrate full-body Quantum MRI, deep genomic sequencing, and continuous biometric monitoring into a single unified protocol managed by global specialists.
                     </div>
 </div>
 <div class="faq-item border border-outline-variant bg-surface overflow-hidden transition-all">
-<button class="w-full flex items-center justify-between p-6 text-left" onclick="toggleFaq(this)">
+<button class="w-full flex items-center justify-between gap-4 p-5 md:p-6 text-left" onclick="toggleFaq(this)">
 <span class="font-headline-md text-headline-md text-lg">How is my health data secured?</span>
 <span class="material-symbols-outlined faq-icon transition-transform">expand_more</span>
 </button>
-<div class="faq-content px-6 text-on-surface-variant font-body-md">
+<div class="faq-content px-5 md:px-6 text-on-surface-variant font-body-md">
                         We utilize military-grade, end-to-end encryption. Our systems are fully HIPAA compliant with independent third-party cybersecurity audits quarterly.
                     </div>
 </div>
@@ -554,9 +641,9 @@
 </div>
 </section>
 <!-- Appointment Section -->
-<section class="py-xl bg-on-surface text-surface" id="booking">
-<div class="w-full max-w-7xl mx-auto px-margin-desktop">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<section class="py-16 md:py-xl bg-on-surface text-surface" id="booking">
+<div class="section-shell">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
 <div>
 <h2 class="font-display-lg text-display-lg text-surface mb-6">Secure Your Path Forward.</h2>
 <p class="text-surface-variant font-body-lg text-body-lg mb-8">Onboarding at altora.official is as seamless as our care.</p>
@@ -571,7 +658,7 @@
 </li>
 </ul>
 </div>
-<div class="bg-surface text-on-surface p-8 rounded-lg shadow-2xl">
+<div class="bg-surface text-on-surface p-5 md:p-8 rounded-lg shadow-2xl">
 <div class="flex items-center justify-between mb-8">
 <h3 class="font-headline-md text-headline-md">Consultation Booking</h3>
 <div class="text-primary font-label-md text-label-md">Step 1 of 3</div>
@@ -609,8 +696,8 @@
 </div>
 </section>
 <!-- The Longevity Council -->
-<section class="py-xl w-full max-w-7xl mx-auto px-margin-desktop">
-<h2 class="font-headline-lg text-headline-lg text-center mb-16">The Longevity Council</h2>
+<section class="py-16 md:py-xl section-shell">
+<h2 class="font-headline-lg text-headline-lg text-center mb-10 md:mb-16">The Longevity Council</h2>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
 <div class="group border border-outline-variant hover:border-primary transition-all p-4 bg-surface text-center">
 <div class="relative mb-6 overflow-hidden aspect-[4/5]">
@@ -649,13 +736,13 @@
 </section>
 <!-- Footer -->
 <footer class="bg-surface-container-lowest border-t border-outline-variant">
-<div class="flex flex-col md:flex-row justify-between items-start w-full px-margin-desktop py-16 max-w-7xl mx-auto gap-12">
+<div class="section-shell flex flex-col md:flex-row justify-between items-start py-12 md:py-16 gap-10 md:gap-12">
 <div class="max-w-sm">
 <div class="font-headline-md text-headline-md font-bold mb-4">altora.official</div>
 <p class="text-on-surface-variant font-body-md text-sm mb-6">Precision Excellence in Longevity. Harnessing the power of predictive clinical data to transform health spans globally.</p>
 <div class="font-label-sm text-label-sm text-outline uppercase tracking-widest">© 2024 altora.official</div>
 </div>
-<div class="grid grid-cols-2 sm:grid-cols-3 gap-12">
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-8 md:gap-12">
 <div>
 <h5 class="font-label-md mb-4 text-on-surface">Explore</h5>
 <ul class="space-y-2">
@@ -714,5 +801,47 @@
             }
         });
     });
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const revealTargets = [
+        ['section > div > div.max-w-2xl', 'scroll-reveal scroll-reveal-left'],
+        ['section .text-center.max-w-3xl', 'scroll-reveal'],
+        ['section .mb-16', 'scroll-reveal'],
+        ['section .max-w-xl', 'scroll-reveal scroll-reveal-left'],
+        ['section .group.border', 'scroll-reveal scroll-reveal-zoom'],
+        ['section .bg-surface-container-lowest.border', 'scroll-reveal scroll-reveal-zoom'],
+        ['section .bg-surface.border', 'scroll-reveal scroll-reveal-zoom'],
+        ['section .p-8.border', 'scroll-reveal scroll-reveal-zoom'],
+        ['section .p-10', 'scroll-reveal scroll-reveal-zoom'],
+        ['section .faq-item', 'scroll-reveal'],
+        ['footer .max-w-sm', 'scroll-reveal scroll-reveal-left'],
+        ['footer .grid', 'scroll-reveal scroll-reveal-right']
+    ];
+
+    revealTargets.forEach(([selector, className]) => {
+        document.querySelectorAll(selector).forEach((element, index) => {
+            className.split(' ').forEach(cls => element.classList.add(cls));
+            element.style.setProperty('--reveal-delay', `${(index % 4) * 80}ms`);
+        });
+    });
+
+    const reveals = document.querySelectorAll('.scroll-reveal');
+    if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.14,
+            rootMargin: '0px 0px -8% 0px'
+        });
+
+        reveals.forEach(element => revealObserver.observe(element));
+    } else {
+        reveals.forEach(element => element.classList.add('is-visible'));
+    }
 </script>
 </body></html>
